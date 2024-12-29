@@ -1,194 +1,300 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Project</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <header style="background-color: #f4f4f4; padding: 10px;">
-            <nav style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; justify-content: center; align-items: center; gap:20px">
-                    <p style="color:red; font-size: 20px; font-weight: bold;">{{user}}</p>
-                    <a href="/" style="text-decoration: none; font-size: 20px; font-weight: bold;">Quizzy</a>
-                </div>
-                <div style="display: flex; align-items-center; justify-content-center">
-                    <!-- Links -->
-                     {% if user.is_authenticated %}
+    <title>Quizzy</title>
+    <style>
+        /* Base Colors */
+:root {
+    --purple: #ba34eb;
+    --lavender: #da89f0;
+    --deep-magenta: #5b0b78;
+    --muted-purple: #5c54a4;
+    --beige: #cfb5aa;
+    --dark-blue: #444c54;
+}
 
-                     <a href="/quiz/" style="margin-right: 15px; text-decoration: none;">Quizes</a>
-                     
-                     <form action="{% url 'logout' %}" method="post" style="margin-right: 15px; text-decoration: none;">
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body and Layout */
+body {
+    background: var(--beige);
+    color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: var(--muted-purple);
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--lavender);
+    color: var(--deep-magenta);
+    border-radius: 5px;
+}
+
+.auth-links {
+    display: flex;
+    gap: 20px;
+}
+
+.auth-links a {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-links a:hover {
+    background-color: var(--lavender);
+    color: var(--deep-magenta);
+    border-radius: 5px;
+}
+
+/* Content Section */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    background-color: var(--beige);
+}
+
+.container {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 15px;
+}
+
+.container h2 {
+    font-size: 1.8rem;
+    color: var(--deep-magenta);
+    margin-bottom: 30px;
+}
+
+.container p {
+    font-size: 1.1rem;
+    color: var(--dark-blue);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background-color: var(--muted-purple);
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    max-width: 200px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--lavender);
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    background-color: var(--dark-blue);
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: var(--lavender);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Form Styling */
+.container .form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.container .form-group label {
+    display: block;
+    color: var(--dark-blue);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.container .form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--muted-purple);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--dark-blue);
+    background-color: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .form-group input:focus {
+    border-color: var(--lavender);
+    box-shadow: 0 0 5px var(--lavender);
+    outline: none;
+}
+
+.logout-btn {
+    background-color: var(--muted-purple);
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none; /* Remove border */
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background-color: var(--lavender);
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .container h1 {
+        font-size: 1.8rem;
+    }
+
+    .container h2 {
+        font-size: 1.4rem;
+    }
+
+    .container p {
+        font-size: 1rem;
+    }
+
+    .container .form-group input {
+        padding: 12px;
+    }
+
+    .container button[type="submit"] {
+        font-size: 1.2rem;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="/">Quizzy</a>
+            <div class="auth-links">
+                {% if user.is_authenticated %}
+                    <a href="/quiz/">Quizzes</a>
+                    <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
-                        <button type="submit" style="margin-right: 15px; text-decoration: none;">Logout</button>
+                        <button type="submit" class="logout-btn">Logout</button>
                     </form>
-                    
-                    {% else %}
-                    <a href="/authenticate/login/" style="margin-right: 15px; text-decoration: none;">Login</a>
-                    <a href="/authenticate/register/" style="margin-right: 15px; text-decoration: none;">Register</a>
-                    {% endif %}
-                </div>
-            </nav>
-        </header>
+                {% else %}
+                    <a href="/authenticate/login/">Login</a>
+                    <a href="/authenticate/register/">Register</a>
+                {% endif %}
+            </div>
+        </nav>
     </header>
-    <main>
+
+
+        <!-- Content that will change based on the page -->
         {% block content %}
-        <!-- Main content goes here -->
         {% endblock %}
-        <style>
-            /* General reset and body styling */
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                background-color: #F4F4F4;
-                color: #333;
-            }
-            
-            /* Header styling */
-            header {
-                background-color: #1E88E5;
-                padding: 10px 20px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            header nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-            
-            header nav div {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            header nav div p {
-                color: #FFC107;
-                font-size: 20px;
-                font-weight: bold;
-            }
-            
-            header nav div a {
-                text-decoration: none;
-                font-size: 20px;
-                font-weight: bold;
-                color: white;
-                transition: color 0.3s ease;
-            }
-            
-            header nav div a:hover {
-                color: #FFC107;
-            }
-            
-            header form button {
-                background-color: #4CAF50;
-                color: white;
-                padding: 5px 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s ease, color 0.3s ease;
-            }
-            
-            header form button:hover {
-                background-color: #FFC107;
-                color: #333;
-            }
-            
-            /* Main content styling */
-            main {
-                padding: 20px;
-            }
-            
-            main h1 {
-                text-align: center;
-                color: #1E88E5;
-            }
-            
-            main p {
-                text-align: center;
-                color: #666;
-                margin-bottom: 20px;
-            }
-            
-            /* Form styling */
-            form {
-                background-color: white;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                margin: 20px auto;
-                max-width: 600px;
-            }
-            
-            /* Question container styling */
-            [id^="id_question_"] {
-                margin-bottom: 20px;
-                padding: 10px;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                background-color: #f9f9f9;
-            }
-            
-            /* Option styling */
-            [id^="id_question_"] > div {
-                margin-bottom: 10px;
-            }
-            
-            [id^="id_question_"] label {
-                font-size: 1rem;
-                color: #333;
-                display: flex;
-                align-items: center;
-            }
-            
-            [id^="id_question_"] input[type="radio"] {
-                margin-right: 10px;
-            }
-            
-            /* Submit button styling */
-            form button[type="submit"] {
-                background-color: #1E88E5;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-            }
-            
-            form button[type="submit"]:hover {
-                background-color: #FFC107;
-                color: #333;
-                transform: scale(1.05);
-            }
-            
-            /* Footer styling */
-            footer {
-                text-align: center;
-                padding: 10px 0;
-                background-color: #1E88E5;
-                color: white;
-                margin-top: 20px;
-                border-top: 1px solid #ddd;
-            }
-            
-            footer p {
-                margin: 0;
-                color: #FFC107;
-            }
-            
-        </style>
-    </main>
+    
+
     <footer>
-        <p>&copy; 2024 My Project</p>
+        <p>&copy; 2024 Quizzy. Created by M.Abdulah Shoukat. All rights reserved.</p>
     </footer>
+
 </body>
+
 </html>

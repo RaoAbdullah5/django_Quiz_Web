@@ -1,16 +1,134 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+    /* Style for the quiz form container */
+.quiz-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f0f8ff; /* Soft light blue background for the entire form */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for the form */
+}
 
-<div >
-<h1>{{ quiz.title }}</h1>
-<p>{{ quiz.description }}</p>
+/* Style for the quiz title */
+.quiz-form-container h1 {
+    font-size: 2.8rem; /* Increased size for the title */
+    color: #004d40; /* Dark teal color for the title */
+    text-align: center;
+    margin-bottom: 30px; /* Increased bottom margin */
+    font-family: 'Arial', sans-serif;
+}
 
+/* Style for the quiz description */
+.quiz-form-container p {
+    font-size: 1.3rem; /* Slightly larger text for the description */
+    color: #00695c; /* Darker teal color for the description */
+    text-align: center;
+    margin-bottom: 40px; /* More space below the description */
+    font-family: 'Arial', sans-serif;
+}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+/* Style for the form itself */
+.quiz-form-container form {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* White background for the form */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #b2dfdb; /* Light teal border around the form */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for the form */
+}
+
+/* Styling for the container of each question */
+.quiz-form-container form > div {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #e0f7fa; /* Light cyan background for each question block */
+    border: 1px solid #b2dfdb; /* Light teal border around each question */
+    border-radius: 8px;
+}
+
+/* Styling each individual radio button label */
+.quiz-form-container form > div label {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem; /* Larger font size for the options */
+    padding-left: 12px;
+    margin-top: 12px; /* Top margin for each option */
+    color: #00796b; /* Dark teal color for the labels */
+}
+
+/* Change the appearance of the radio buttons when unselected */
+.quiz-form-container form input[type="radio"] {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: #00796b; /* Dark teal accent color for the radio button */
+}
+
+/* Hover effect for the radio buttons */
+.quiz-form-container form input[type="radio"]:hover {
+    background-color: #b2dfdb; /* Light green background on hover */
+    border-color: #00796b; /* Dark teal border on hover */
+}
+
+/* Change the style of the selected radio button */
+.quiz-form-container form input[type="radio"]:checked {
+    background-color: #00796b;
+    border-color: #00796b;
+    box-shadow: 0 0 0 4px rgba(0, 123, 105, 0.3); /* Dark teal halo effect */
+}
+
+/* Styling for label when the radio button is selected */
+.quiz-form-container form input[type="radio"]:checked + label {
+    color: #00796b; /* Change label color to dark teal when selected */
+    font-weight: bold; /* Make selected label bold */
+}
+
+/* Add some spacing between the questions and labels */
+.quiz-form-container form p {
+    margin-bottom: 25px;
+}
+
+/* Style for the submit button */
+.quiz-form-container form button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #00796b; /* Dark teal background for the button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 25px; /* Space above the button */
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-form-container form button:hover {
+    background-color: #004d40; /* Darker teal on hover */
+}
+
+/* Optional: Add padding to form labels for better readability */
+.quiz-form-container form label {
+    padding-top: 16px; /* Padding above each label */
+}
+
+</style>
+<div class="quiz-form-container">
+    <h1>{{ quiz.title }}</h1>
+    <p>{{ quiz.description }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
 </div>
 
 {% endblock %}

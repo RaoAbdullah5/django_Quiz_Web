@@ -1,10 +1,163 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+<main>
+    <style>
+        /* Login Container */
+        .login-container {
+            width: 100%;
+            max-width: 450px;  /* Reduced max-width */
+            margin: 50px auto;  /* Reduced margin */
+            padding: 30px;  /* Reduced padding */
+            background-color: #f0f4f8;  /* Changed background color */
+            border-radius: 10px;  /* Slightly smaller border radius */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    
+        /* Heading Styling */
+        .login-heading {
+            font-size: 1.8rem;  /* Reduced font size */
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+    
+        .login-subheading {
+            font-size: 1.4rem;  /* Reduced font size */
+            color: var(--deep-magenta);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+    
+        .login-description {
+            font-size: 1rem;  /* Reduced font size */
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+    
+        /* Form Styling */
+        .login-form {
+            width: 100%;
+        }
+    
+        .login-form-group {
+            margin-bottom: 20px;  /* Reduced margin */
+            text-align: left;
+        }
+    
+        .login-label {
+            display: block;
+            color: var(--dark-blue);
+            font-size: 1rem;  /* Reduced label size */
+            margin-bottom: 6px;  /* Reduced margin */
+            font-weight: 500;
+        }
+    
+        .login-form-group input {
+            width: 100%;
+            padding: 12px;  /* Reduced padding */
+            border: 2px solid var(--muted-purple);
+            border-radius: 6px;  /* Reduced border radius */
+            font-size: 0.95rem;  /* Reduced input font size */
+            color: var(--dark-blue);
+            background-color: var(--white);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .login-form-group input:focus {
+            border-color: var(--lavender);
+            box-shadow: 0 0 5px var(--lavender);
+            outline: none;
+        }
+    
+        /* Submit Button */
+        .login-btn {
+            background-color: var(--muted-purple);
+            color: var(--white);
+            padding: 12px 25px;  /* Reduced padding */
+            font-size: 1.1rem;  /* Reduced font size */
+            border-radius: 6px;  /* Reduced border radius */
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+    
+        .login-btn:hover {
+            background-color: var(--lavender);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Authentication Links */
+        .login-auth-links a {
+            color: var(--deep-magenta);
+            font-weight: 600;
+            text-decoration: none;
+        }
+    
+        .login-auth-links a:hover {
+            color: var(--lavender);
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 15px;
+                padding: 20px;
+            }
+    
+            .login-heading {
+                font-size: 1.6rem;
+            }
+    
+            .login-subheading {
+                font-size: 1.3rem;
+            }
+    
+            .login-description {
+                font-size: 0.95rem;
+            }
+    
+            .login-form-group input {
+                padding: 10px;
+            }
+    
+            .login-btn {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <div class="login-container">
+        <h1 class="login-heading">Login to Quizzy</h1>
+        <h2 class="login-subheading">Your Ultimate Quiz Experience Awaits</h2>
+        <p class="login-description">Enter your credentials to start your quiz journey!</p>
+
+        <!-- Login Form -->
+        <form method="post" class="login-form">
+            {% csrf_token %}
+
+            <div class="login-form-group">
+                <label for="id_username" class="login-label">Username</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="login-form-group">
+                <label for="id_password" class="login-label">Password</label>
+                {{ form.password }}
+            </div>
+            
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="login-auth-links">
+            <p>Don't have an account? <a href="/authenticate/register/" class="login-register-link">Register here</a></p>
+        </div>
+    </div>
+</main>
+
+
+
 {% endblock %}

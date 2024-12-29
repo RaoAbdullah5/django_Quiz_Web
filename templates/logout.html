@@ -1,6 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>You have been logged out.</h1>
-    <a href="{% url 'login' %}">Login again</a>
-{% endblock %}
+    <style>
+        /* Centering the content */
+        .logout-message {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 1.5rem;
+        }
+
+        .logout-message h1 {
+            color: #333;
+        }
+
+        /* Styling the link to look like a button */
+        .logout-message a {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1rem;
+            color: white;
+            background-color: #5D3FD3;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect */
+        .logout-message a:hover {
+            background-color: #7E4DFF;
+        }
+    </style>
+<main>
+      <div class="logout-message">
+        <h1>You have been logged out.</h1>
+        <a href="{% url 'login' %}">Login again</a>
+    </div>
+</main>
+  
+    {% endblock %}

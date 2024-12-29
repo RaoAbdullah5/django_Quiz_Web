@@ -25,7 +25,8 @@ def quiz_detail(request, quiz_id):
     quizz = get_object_or_404(quiz, id=quiz_id)
     questions = quizz.questions.all()  # Use related_name='questions' from the model
     if UserQuizResult.objects.filter(user=request.user, quiz=quizz).exists():
-        return render(request, 'quiz_already_attempted.html', {'quiz': quizz})
+        res = UserQuizResult.objects.filter(user=request.user, quiz=quizz).first()
+        return render(request, 'quiz_already_attempted.html', {'quiz': quizz, 'res':res.score })
     if request.method == "POST":
         form = QuizForm(request.POST, questions=questions)
         if form.is_valid():

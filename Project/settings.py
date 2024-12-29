@@ -127,4 +127,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # login, register, and logout pattern
 LOGIN_REDIRECT_URL = '/quiz/'
-LOGOUT_REDIRECT_URL = '/authenticate/login/'
+# LOGOUT_REDIRECT_URL = '/authenticate/login/'
