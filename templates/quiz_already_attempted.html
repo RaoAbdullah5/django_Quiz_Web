@@ -3,82 +3,101 @@
 {% block content %}
 <style>
     /* Styling for the result page container */
-.result-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9; /* Light background color */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin-top: 50px;
-    max-width: 600px;
-    width: 100%;
-}
+    .result-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff; /* Clean white background */
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        margin-top: 50px;
+        max-width: 650px;
+        width: 100%;
+    }
 
-/* Heading styling for the result page */
-.result-heading {
-    font-size: 2rem;
-    color: #0288d1; /* Blue color for heading */
-    margin-bottom: 20px;
-}
-
-/* Score styling */
-.result-score {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00796b; /* Dark teal color */
-    margin-bottom: 20px;
-}
-
-/* Thank You message styling */
-.thank-you {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 25px;
-}
-
-/* Styling for the back to quizzes link */
-.back-to-quizzes {
-    font-size: 1rem;
-    color: #0288d1; /* Blue color for link */
-    text-decoration: none;
-    border: 1px solid #0288d1;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Hover effect for the link */
-.back-to-quizzes:hover {
-    background-color: #0288d1;
-    color: #fff; /* Change text color to white */
-}
-
-/* Optional: style for responsive design */
-@media (max-width: 768px) {
+    /* Heading styling for the result page */
     .result-heading {
-        font-size: 1.6rem;
+        font-size: 2rem; /* Adjusted size for a balanced heading */
+        color: #0288d1; /* Blue color for heading */
+        font-weight: 500; /* Slightly lighter font weight for clean look */
+        margin-bottom: 30px;
+        text-align: center;
     }
 
+    /* Styling for the quiz title within the heading */
+    .quiz-title {
+        color: #f44336; /* Change the color to a different shade (red in this case) */
+        text-decoration: underline; /* Underline the title */
+    }
+
+    /* Score styling */
     .result-score {
-        font-size: 1.2rem;
+        font-size: 1.4rem; /* Slightly larger font for the score */
+        font-weight: 600; /* Bolder for emphasis */
+        color: #00796b; /* Teal color for score */
+        margin-bottom: 15px;
+        text-align: center;
     }
 
+    /* Thank You message styling */
     .thank-you {
-        font-size: 1rem;
+        font-size: 1.2rem; /* Smaller thank you message */
+        color: #555; /* Darker gray for softer look */
+        margin-bottom: 30px;
+        text-align: center;
     }
-}
 
+    /* Styling for the back to quizzes link */
+    .back-to-quizzes {
+        font-size: 1.1rem; /* Slightly larger button font */
+        color: #ffffff; /* White text */
+        background-color: #0288d1; /* Blue background */
+        text-decoration: none;
+        border: 2px solid #0288d1;
+        padding: 12px 25px; /* Increased padding for a clickable button */
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        display: inline-block;
+    }
+
+    /* Hover effect for the back-to-quizzes link */
+    .back-to-quizzes:hover {
+        background-color: #0277bd; /* Slightly darker blue on hover */
+        color: #ffffff;
+        transform: scale(1.05); /* Subtle scale effect on hover */
+    }
+
+    /* Optional: style for responsive design */
+    @media (max-width: 768px) {
+        .result-heading {
+            font-size: 1.6rem; /* Adjust for smaller screens */
+        }
+
+        .result-score {
+            font-size: 1.3rem; /* Smaller score font for mobile */
+        }
+
+        .thank-you {
+            font-size: 1rem; /* Smaller thank you message */
+        }
+
+        .back-to-quizzes {
+            padding: 10px 20px; /* Adjust button padding for mobile */
+        }
+    }
 </style>
+
 <main>
-     <div class="result-container">
-        <h1 class="result-heading">You have already attempted this quiz: {{ quiz.title }}</h1>
+    <div class="result-container">
+        <h1 class="result-heading">You have already attempted this quiz: <span class="quiz-title">{{ quiz.title }}</span></h1>
         <p class="result-score">Your Score: <span class="score">{{ res }}</span></p>
+        <p class="result-score">Total Score: <span class="score">{{ total }}</span></p>
+        <p class="result-score">Percentage: <span class="score">{{ percent }}%</span></p>
         <p class="thank-you">Thank you for participating!</p>
         <a href="{% url 'quiz_list' %}" class="back-to-quizzes">Back to Quizzes</a>
     </div>
 </main>
-   
+
 {% endblock %}

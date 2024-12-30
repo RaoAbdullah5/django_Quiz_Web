@@ -29,4 +29,5 @@ class UserQuizResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quiz = models.ForeignKey(quiz, on_delete=models.CASCADE)
     score = models.IntegerField()
+    Total_marks = models.IntegerField()
     completion_time = models.DateTimeField(auto_now_add=True)

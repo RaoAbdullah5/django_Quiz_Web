@@ -33,9 +33,25 @@
 
     /* Score styling */
     .result-container .score {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
         color: #0288d1; /* Blue color for the score */
+        margin-top: 10px;
+    }
+
+    /* Styling for the total score */
+    .result-container .total {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #00796b; /* Dark teal for total score */
+        margin-top: 10px;
+    }
+
+    /* Styling for percentage */
+    .result-container .percentage {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #d32f2f; /* Red color for percentage to indicate importance */
         margin-top: 10px;
     }
 
@@ -75,9 +91,11 @@
 
 <main>
     <div class="result-container">
-        <h3>Hi, {{ user }}! Your result is given below:</h3>
-        <p>Quiz: {{ quiz.title }}</p>
+        <h3>Hi, {{ user }}! Your result is below:</h3>
+        <p>Quiz: <strong>{{ quiz.title }}</strong></p>
         <p>Your Score: <span class="score">{{ score }}</span></p>
+        <p>Total Score: <span class="total">{{ total }}</span></p>
+        <p>Your percentage: <span class="percentage">{{ percent }}%</span></p>
         <a href="{% url 'quiz_list' %}" class="back-to-quizzes">Back to Quizzes</a>
     </div>
 </main>

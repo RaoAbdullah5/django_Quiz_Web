@@ -8,259 +8,265 @@
     <title>Quizzy</title>
     <style>
         /* Base Colors */
-:root {
-    --purple: #ba34eb;
-    --lavender: #da89f0;
-    --deep-magenta: #5b0b78;
-    --muted-purple: #5c54a4;
-    --beige: #cfb5aa;
-    --dark-blue: #444c54;
-}
+        :root {
+            --purple: #ba34eb;
+            --lavender: #da89f0;
+            --deep-magenta: #5b0b78;
+            --muted-purple: #5c54a4;
+            --beige: #cfb5aa;
+            --dark-blue: #444c54;
+        }
 
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-/* Body and Layout */
-body {
-    background: var(--beige);
-    color: var(--dark-blue);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    text-align: center;
-}
+        /* Body and Layout */
+        body {
+            background: var(--beige);
+            color: var(--dark-blue);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-/* Header */
-header {
-    background-color: var(--muted-purple);
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+        /* Header */
+        header {
+            background-color: var(--muted-purple);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: 0 auto;
+        }
 
-nav a {
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    padding: 8px 15px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+        nav a {
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+            padding: 8px 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-nav a:hover {
-    background-color: var(--lavender);
-    color: var(--deep-magenta);
-    border-radius: 5px;
-}
+        nav a:hover {
+            background-color: var(--lavender);
+            color: var(--deep-magenta);
+            border-radius: 5px;
+        }
 
-.auth-links {
-    display: flex;
-    gap: 20px;
-}
+        .auth-links {
+            display: flex;
+            gap: 20px;
+        }
 
-.auth-links a {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+        .auth-links a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-.auth-links a:hover {
-    background-color: var(--lavender);
-    color: var(--deep-magenta);
-    border-radius: 5px;
-}
+        .auth-links a:hover {
+            background-color: var(--lavender);
+            color: var(--deep-magenta);
+            border-radius: 5px;
+        }
 
-/* Content Section */
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 0;
-    background-color: var(--beige);
-}
+        /* Content Section */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            background-color: var(--beige);
+        }
 
-.container {
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    animation: fadeIn 0.8s ease-in-out;
-}
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
 
-.container h1 {
-    font-size: 2.5rem;
-    color: var(--dark-blue);
-    margin-bottom: 15px;
-}
+        .container h1 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
 
-.container h2 {
-    font-size: 1.8rem;
-    color: var(--deep-magenta);
-    margin-bottom: 30px;
-}
+        .container h2 {
+            font-size: 1.8rem;
+            color: var(--deep-magenta);
+            margin-bottom: 30px;
+        }
 
-.container p {
-    font-size: 1.1rem;
-    color: var(--dark-blue);
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
+        .container p {
+            font-size: 1.1rem;
+            color: var(--dark-blue);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
 
-.btn-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.btn {
-    background-color: var(--muted-purple);
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.25rem;
-    border-radius: 8px;
-    text-decoration: none;
-    max-width: 200px;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
+        .btn {
+            background-color: var(--muted-purple);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            max-width: 200px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-.btn:hover {
-    background-color: var(--lavender);
-    transform: scale(1.05);
-}
+        .btn:hover {
+            background-color: var(--lavender);
+            transform: scale(1.05);
+        }
 
-/* Footer */
-footer {
-    margin-top: auto;
-    padding: 20px;
-    background-color: var(--dark-blue);
-    color: white;
-    text-align: center;
-}
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background-color: var(--dark-blue);
+            color: white;
+            text-align: center;
+        }
 
-footer p {
-    margin: 0;
-}
+        footer p {
+            margin: 0;
+        }
 
-footer a {
-    color: var(--purple);
-    text-decoration: none;
-    font-weight: bold;
-}
+        footer a {
+            color: var(--purple);
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-footer a:hover {
-    color: var(--lavender);
-}
+        footer a:hover {
+            color: var(--lavender);
+        }
 
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
 
-    to {
-        opacity: 1;
-    }
-}
+            to {
+                opacity: 1;
+            }
+        }
 
-/* Form Styling */
-.container .form-group {
-    margin-bottom: 25px;
-    text-align: left;
-}
+        /* Form Styling */
+        .container .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
 
-.container .form-group label {
-    display: block;
-    color: var(--dark-blue);
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-}
+        .container .form-group label {
+            display: block;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
 
-.container .form-group input {
-    width: 100%;
-    padding: 14px;
-    border: 2px solid var(--muted-purple);
-    border-radius: 8px;
-    font-size: 1rem;
-    color: var(--dark-blue);
-    background-color: white;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+        .container .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--muted-purple);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--dark-blue);
+            background-color: white;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.container .form-group input:focus {
-    border-color: var(--lavender);
-    box-shadow: 0 0 5px var(--lavender);
-    outline: none;
-}
+        .container .form-group input:focus {
+            border-color: var(--lavender);
+            box-shadow: 0 0 5px var(--lavender);
+            outline: none;
+        }
 
-.logout-btn {
-    background-color: var(--muted-purple);
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border: none; /* Remove border */
-    text-decoration: none;
-    display: inline-block;
-}
+        .logout-btn {
+            background-color: var(--muted-purple);
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none; /* Remove border */
+            text-decoration: none;
+            display: inline-block;
+        }
 
-.logout-btn:hover {
-    background-color: var(--lavender);
-    transform: scale(1.05); /* Slight zoom effect */
-}
+        .logout-btn:hover {
+            background-color: var(--lavender);
+            transform: scale(1.05); /* Slight zoom effect */
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        margin: 20px;
-        padding: 25px;
-    }
+        /* Styling for the "Previous Results" Button */
+        .previous-results-btn {
+            position: fixed;
+            top: 80px; /* Position it just below the navbar */
+            right: 0px;; /* Attach it to the right corner */
+            background-color: #0288d1;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000; /* Ensure it stays on top of the navbar */
+        }
 
-    .container h1 {
-        font-size: 1.8rem;
-    }
+        .previous-results-btn:hover {
+            background-color: #0277bd;
+            transform: scale(1.05);
 
-    .container h2 {
-        font-size: 1.4rem;
-    }
+        .user-info {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #5b0b78; /* Defined color variable */
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-in-out;
+        }
 
-    .container p {
-        font-size: 1rem;
-    }
-
-    .container .form-group input {
-        padding: 12px;
-    }
-
-    .container button[type="submit"] {
-        font-size: 1.2rem;
-    }
-}
 
     </style>
 </head>
@@ -282,18 +288,28 @@ footer a:hover {
                     <a href="/authenticate/register/">Register</a>
                 {% endif %}
             </div>
-        </nav>
+        </nav
+        {% if user.is_authenticated %}
+    <div class="user-info">
+        Hello, {{ user }}! Welcome to Quizzy.
+    </div>
+{% endif %}
+
     </header>
 
 
-        <!-- Content that will change based on the page -->
-        {% block content %}
-        {% endblock %}
-    
+   <!-- Content that will change based on the page -->
+    {% block content %}
+    {% endblock %}
 
     <footer>
         <p>&copy; 2024 Quizzy. Created by M.Abdulah Shoukat. All rights reserved.</p>
     </footer>
+
+    <!-- Fixed "Previous Results" button -->
+    {% if user.is_authenticated %}
+    <a href="/quiz/prevoius_results" class="previous-results-btn">Previous Results</a>
+    {% endif %}
 
 </body>
 

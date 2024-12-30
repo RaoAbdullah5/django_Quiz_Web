@@ -15,7 +15,7 @@ class questionAdmin(admin.ModelAdmin):
     list_filter = ('quiz',)  # Filter by quiz in the sidebar
 
 class UserQuizResultAdmin(admin.ModelAdmin):
-    list_display = ('user', 'quiz', 'score', 'completion_time')
+    list_display = ('user', 'quiz', 'score','Total_marks', 'completion_time')
     list_filter = ('quiz',)
     search_fields = ('user__username',)  # Search by username
 
